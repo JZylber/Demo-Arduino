@@ -1,0 +1,17 @@
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 20px;
+}
+
+.rgbContainer {
+  display: flex;
+}
+
+.colorPreview {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  background-color: #000;
+}
