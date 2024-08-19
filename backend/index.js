@@ -3,7 +3,7 @@ import { SerialPort } from "serialport";
 
 const port = new SerialPort({
   path: "/dev/tty-usbserial1",
-  baudRate: 57600,
+  baudRate: 9600,
 });
 
 onEvent("colorSeleccionado", (color) => {
