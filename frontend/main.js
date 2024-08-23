@@ -1,5 +1,6 @@
 const colorInput = document.getElementById("ledColor");
 const colorPreview = document.getElementById("colorPreview");
+const estado = document.getElementById("estado")
 
 function selectColor() {
   const color = colorInput.value;
@@ -8,3 +9,13 @@ function selectColor() {
 }
 
 colorInput.addEventListener("change", selectColor);
+
+function botonApretado(status){
+  if(status.on){
+    estado.innerText = "prendido";
+  } else {
+    estado.innerText = "apagado";
+  }
+}
+
+receive("boton",botonApretado)
