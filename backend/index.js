@@ -1,10 +1,17 @@
 import { onEvent, sendEvent, startServer } from "soquetic";
-import { SerialPort } from "serialport";
+import { ReadlineParser, SerialPort } from "serialport";
 
 const port = new SerialPort({
   //Completar con el puerto correcto
-  path: "COM3",
+  path: "/dev/cu.usbserial-130",
   baudRate: 9600,
+});
+
+const parser = new ReadlineParser();
+port.pipe(parser);
+
+port.on("open", () => {
+  console.log("Puerto serial abierto");
 });
 
 onEvent("colorSeleccionado", (color) => {
@@ -14,9 +21,8 @@ onEvent("colorSeleccionado", (color) => {
   port.write(`${red},${green},${blue}\n`);
 });
 
-port.on("data", function (data) {
-  let status = data.toString().trim();
-  let ledOn = status === "on";
+parser.on("data", function (status) {
+  let ledOn = status.trim() === "on";
   sendEvent("boton", { on: ledOn });
 });
 startServer();
