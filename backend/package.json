@@ -13,6 +13,6 @@
   "license": "ISC",
   "dependencies": {
     "serialport": "^12.0.0",
-    "soquetic": "^1.2.3"
+    "soquetic": "^1.2.6"
   }
 }
