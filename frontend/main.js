@@ -5,7 +5,7 @@ const estado = document.getElementById("estado");
 function selectColor() {
   const color = colorInput.value;
   colorPreview.style.backgroundColor = color;
-  postData("colorSeleccionado", color);
+  postEvent("colorSeleccionado", color);
 }
 
 colorInput.addEventListener("change", selectColor);
@@ -18,6 +18,6 @@ function botonApretado(status) {
   }
 }
 
-connect2Server();
+subscribeRealTimeEvent("boton", botonApretado);
 
-receive("boton", botonApretado);
+connect2Server();

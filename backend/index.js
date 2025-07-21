@@ -1,4 +1,4 @@
-import { onEvent, sendEvent, startServer } from "soquetic";
+import { subscribePOSTEvent, realTimeEvent, startServer } from "soquetic";
 import { ReadlineParser, SerialPort } from "serialport";
 
 const port = new SerialPort({
@@ -14,7 +14,7 @@ port.on("open", () => {
   console.log("Puerto serial abierto");
 });
 
-onEvent("colorSeleccionado", (color) => {
+subscribePOSTEvent("colorSeleccionado", (color) => {
   const red = parseInt(color.slice(1, 3), 16);
   const green = parseInt(color.slice(3, 5), 16);
   const blue = parseInt(color.slice(5, 7), 16);
@@ -23,6 +23,6 @@ onEvent("colorSeleccionado", (color) => {
 
 parser.on("data", function (status) {
   let ledOn = status.trim() === "on";
-  sendEvent("boton", { on: ledOn });
+  realTimeEvent("boton", { on: ledOn });
 });
 startServer();
