@@ -3,7 +3,7 @@ import { ReadlineParser, SerialPort } from "serialport";
 
 const port = new SerialPort({
   //Completar con el puerto correcto
-  path: "/dev/cu.usbserial-130",
+  path: "COM3",
   baudRate: 9600,
 });
 
