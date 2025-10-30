@@ -26,15 +26,15 @@ void setup() {
 
 void turnOff() {
   on = false;
-  analogWrite(RED, 255);
-  analogWrite(GREEN, 255);
-  analogWrite(BLUE, 255);
+  analogWrite(RED, 0);
+  analogWrite(GREEN, 0);
+  analogWrite(BLUE, 0);
 }
 
 void updateColor(){
-  analogWrite(RED, 255 - red);
-  analogWrite(GREEN, 255 - green);
-  analogWrite(BLUE, 255 - blue);
+  analogWrite(RED, red);
+  analogWrite(GREEN, green);
+  analogWrite(BLUE, blue);
 }
 
 void turnOn() {
